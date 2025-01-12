@@ -28,8 +28,8 @@ Supports popular hashing algorithms like `MD5`, `SHA1`, `SHA256`, and more.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/storage-media-hasher.git
-   cd storage-media-hasher
+   git clone https://github.com/AkashMadanu/HashFD.git
+   cd HashFD
    ```
 
 2. Install the required Python libraries:
