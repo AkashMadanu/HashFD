@@ -6,21 +6,18 @@ from rich.console import Console
 console = Console()
 
 def compute_directory_hash(directory_path, algorithm="sha256"):
-    """
-    Compute a single hash for an entire directory by hashing file paths and content.
-    Ensures consistent results by sorting file paths and content.
-    """
+    
     hash_func = getattr(hashlib, algorithm)()
     console.print(f"[bold cyan]Hashing entire directory:[/bold cyan] {directory_path}")
 
     for root, _, files in sorted(os.walk(directory_path)):
-        for file in sorted(files):  # Sort files to ensure consistent results
+        for file in sorted(files):  
             file_path = os.path.join(root, file)
             file_hash = compute_file_hash(file_path, algorithm)
             if file_hash:
-                # Update directory hash with the file path and its content hash
-                hash_func.update(file_path.encode())  # Include file path
-                hash_func.update(file_hash.encode())  # Include file content hash
+                
+                hash_func.update(file_path.encode())  
+                hash_func.update(file_hash.encode())  
 
     return hash_func.hexdigest()
 
@@ -32,7 +29,7 @@ def compute_file_hash(file_path, algorithm="sha256"):
     hash_func = getattr(hashlib, algorithm)()
     try:
         with open(file_path, "rb") as file:
-            while chunk := file.read(8192):  # Read file in 8KB chunks
+            while chunk := file.read(8192): 
                 hash_func.update(chunk)
         return hash_func.hexdigest()
     except FileNotFoundError:
@@ -50,12 +47,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if os.path.isfile(args.path):
-        # Compute and display hash for a single file
+        
         file_hash = compute_file_hash(args.path, args.algorithm)
         if file_hash:
             console.print(f"[bold green]{args.algorithm.upper()} Hash:[/bold green] {file_hash}")
     elif os.path.isdir(args.path):
-        # Compute and display hash for a directory
+        
         dir_hash = compute_directory_hash(args.path, args.algorithm)
         console.print(f"[bold green]{args.algorithm.upper()} Hash for directory:[/bold green] {dir_hash}")
     else:
