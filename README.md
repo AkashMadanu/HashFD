@@ -29,8 +29,11 @@ Supports popular hashing algorithms like `MD5`, `SHA1`, `SHA256`, and more.
 1. Clone the repository:
    ```bash
    git clone https://github.com/AkashMadanu/HashFD.git
+
    cd HashFD
    ```
+
+Note: If you are using Linux, skip the next step.
 
 2. Install the required Python libraries:
    ```bash
