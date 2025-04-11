@@ -1,7 +1,7 @@
 # HashFD
 Directory and File hasher
 
-# Storage Media Hasher
+# ⚙️Storage Media Hasher
 
 A Python-based utility to compute cryptographic hashes for files and directories.  
 Supports popular hashing algorithms like `MD5`, `SHA1`, `SHA256`, and more.
